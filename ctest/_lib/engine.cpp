@@ -1,5 +1,5 @@
 #include <Python.h>
-#include "functions.h"
+#include "functions.hpp"
 
 static PyObject* 
 engine_addNumbers(PyObject* self, PyObject* args) {

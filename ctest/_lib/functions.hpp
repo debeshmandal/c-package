@@ -1,5 +1,7 @@
-#ifndef FUNCTION_H
-#define FUNCTION_H
+#ifndef FUNCTION_HPP
+#define FUNCTION_HPP
+#include <bits/stdc++.h>
+#include <cmath>
 double addNumbers(double a, double b);
-double lennardJonesPotential(double r, double eps, double sig);
+double vectorNorm (std::vector<double> vect);
 #endif

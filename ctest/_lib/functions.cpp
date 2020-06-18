@@ -1,5 +1,4 @@
-#include <bits/stdc++.h>
-#include <cmath>
+#include "functions.hpp"
 
 double addNumbers (double a, double b) {
     double sum;
