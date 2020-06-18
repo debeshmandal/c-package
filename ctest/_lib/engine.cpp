@@ -21,8 +21,12 @@ engine_addNumbers(PyObject* self, PyObject* args) {
 };
 
 static PyObject*
-engine_vectorNorm(PyObject* self, PyObject* py_vec) {
-    std::vector<double> vect = listTupleToVector_Double(py_vec);
+engine_vectorNorm(PyObject* self, PyObject* args) {
+    PyObject* py_vect;
+    if (!PyArg_ParseTuple(args, "O", &py_vect)) {
+        return NULL;
+    }
+    std::vector<double> vect = listTupleToVector_Double(py_vect);
     double result = vectorNorm(vect);
     return PyFloat_FromDouble(result);
 };

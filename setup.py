@@ -1,4 +1,5 @@
 import setuptools
+from setuptools import dist
 from distutils.core import Extension
 
 engine = Extension(
@@ -28,5 +29,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.5",
-    ext_modules = [engine],
+    ext_modules = [engine]
 )
