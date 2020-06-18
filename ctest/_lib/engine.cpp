@@ -1,5 +1,6 @@
 #include <Python.h>
 #include "functions.hpp"
+#include "utils.hpp"
 
 static PyObject* 
 engine_addNumbers(PyObject* self, PyObject* args) {
@@ -19,9 +20,17 @@ engine_addNumbers(PyObject* self, PyObject* args) {
     
 };
 
+static PyObject*
+engine_vectorNorm(PyObject* self, PyObject* py_vec) {
+    std::vector<double> vect = listTupleToVector_Double(py_vec);
+    double result = vectorNorm(vect);
+    return PyFloat_FromDouble(result);
+};
+
 // Define docstrings
 PyDoc_STRVAR(engine_docs, "Package for running iterative numerical simulations");
 PyDoc_STRVAR(engine_addNumbers_docs, "addNumbers(n1 : number, n2 : number) -> float: add two numbers together\n");
+PyDoc_STRVAR(engine_vectorNorm_docs, "vectorNorm(vector : list) -> float: returns the magnitude of a 1D Vector");
 
 // Create list of PyMethodDefs
 static PyMethodDef EngineFunctions[] = {
@@ -30,6 +39,12 @@ static PyMethodDef EngineFunctions[] = {
         (PyCFunction)engine_addNumbers,
         METH_VARARGS, 
         engine_addNumbers_docs
+    },
+    {
+        "vectorNorm", 
+        (PyCFunction)engine_vectorNorm,
+        METH_VARARGS, 
+        engine_vectorNorm_docs
     },
     {NULL, NULL, 0, NULL} /* Sentinel */
 };
