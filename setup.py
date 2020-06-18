@@ -1,19 +1,22 @@
 import setuptools
 from distutils.core import Extension
 
-module1 = Extension(
+engine = Extension(
     'engine', 
     sources=[
-            './ctest/_lib/engine.c',
-            './ctest/_lib/functions.c'
-        ])
+            './ctest/_lib/engine.cpp',
+            './ctest/_lib/functions.cpp',
+            './ctest/_lib/utils.cpp'
+        ],
+    language='c++'
+)
 
 with open("README.md", "r") as f:
     long_description = f.read()
 
 setuptools.setup(
     name="ctest",
-    version="0.0.1",
+    version="1.0.0",
     author="Debesh Mandal",
     description="Package for testing C implementations in Python",
     long_description=long_description,
@@ -25,5 +28,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.5",
-    ext_modules = [module1],
+    ext_modules = [engine],
 )
